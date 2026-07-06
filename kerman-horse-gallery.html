@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kerman Horse Gallery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;800;900&family=Playfair+Display:wght@700;900&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ── TOKENS ── */
+:root {
+  --bg:        #1c1c1c;
+  --bg2:       #242424;
+  --bg3:       #2e2e2e;
+  --border:    #3a3a3a;
+  --muted:     #888;
+  --light:     #c8c8c8;
+  --white:     #f0ede8;
+  --orange:    #e07830;
+  --orange2:   #f09050;
+  --orange-dim:#7a3e12;
+  --fa: 'Vazirmatn', sans-serif;
+  --en: 'Space Grotesk', sans-serif;
+  --display: 'Playfair Display', serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--fa);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+body.ltr { direction: ltr; font-family: var(--en); }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem;
+  height: 60px;
+  background: rgba(28,28,28,0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 0.7rem;
+}
+.nav-logo-mark {
+  width: 36px; height: 36px;
+  background: var(--orange);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+}
+.nav-brand-text {
+  font-family: var(--display);
+  font-size: 1.05rem;
+  color: var(--white);
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+}
+.nav-brand-text small {
+  display: block;
+  font-family: var(--en);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+}
+.nav-right { display: flex; align-items: center; gap: 0.75rem; }
+
+.btn-lang {
+  background: var(--bg3); border: 1px solid var(--border);
+  color: var(--muted); padding: 0.35rem 0.8rem;
+  border-radius: 20px; font-size: 0.75rem; cursor: pointer;
+  font-family: var(--en); transition: all 0.2s;
+}
+.btn-lang:hover { color: var(--white); border-color: var(--orange); }
+
+.btn-cart {
+  display: flex; align-items: center; gap: 0.5rem;
+  background: var(--orange); border: none; color: #fff;
+  padding: 0.45rem 1rem; border-radius: 20px;
+  font-weight: 700; font-size: 0.82rem; cursor: pointer;
+  font-family: var(--fa); transition: background 0.2s;
+}
+body.ltr .btn-cart { font-family: var(--en); }
+.btn-cart:hover { background: var(--orange2); }
+.cart-badge {
+  background: rgba(0,0,0,0.3);
+  border-radius: 50%; width: 18px; height: 18px;
+  font-size: 0.7rem; display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-family: var(--en);
+}
+
+/* ── HERO ── */
+.hero {
+  padding: 100px 2rem 60px;
+  max-width: 780px; margin: 0 auto;
+  text-align: center;
+}
+.hero-tag {
+  display: inline-block;
+  border: 1px solid var(--orange-dim);
+  color: var(--orange2); font-size: 0.72rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 0.3rem 1rem; border-radius: 20px;
+  font-family: var(--en); margin-bottom: 1.5rem;
+}
+.hero h1 {
+  font-family: var(--display);
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  line-height: 1.05; letter-spacing: -0.02em;
+  color: var(--white); margin-bottom: 0.6rem;
+}
+.hero h1 .accent { color: var(--orange); }
+.hero-sub {
+  color: var(--muted); font-size: 0.95rem;
+  line-height: 1.8; max-width: 480px; margin: 0 auto 2.5rem;
+}
+.hero-stats {
+  display: flex; gap: 2.5rem; justify-content: center;
+  border-top: 1px solid var(--border); padding-top: 2rem;
+}
+.stat-val {
+  font-family: var(--display); font-size: 2rem; color: var(--orange);
+}
+.stat-lbl { font-size: 0.72rem; color: var(--muted); margin-top: 0.1rem; }
+
+/* ── SECTION ── */
+.sec { padding: 3rem 2rem; max-width: 1100px; margin: 0 auto; }
+.sec-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-bottom: 1.8rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--border);
+}
+.sec-title { font-size: 1.25rem; font-weight: 700; }
+.sec-meta { font-size: 0.75rem; color: var(--muted); font-family: var(--en); }
+
+/* ── SEARCH ── */
+.search-wrap {
+  max-width: 1100px; margin: 0 auto;
+  padding: 0 2rem 2rem;
+}
+.search-box {
+  display: flex; align-items: center; gap: 0.8rem;
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 10px; padding: 0.6rem 1rem;
+  transition: border-color 0.2s;
+}
+.search-box:focus-within { border-color: var(--orange); }
+.search-icon { font-size: 1rem; color: var(--muted); }
+.search-input {
+  flex:1; background: none; border: none; outline: none;
+  color: var(--white); font-size: 0.9rem; font-family: var(--fa);
+}
+body.ltr .search-input { font-family: var(--en); }
+.search-input::placeholder { color: var(--muted); }
+
+/* ── RIDER CARDS ── */
+.riders-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.2rem;
+}
+.rider-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 14px; overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+.rider-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--orange-dim);
+  box-shadow: 0 8px 32px rgba(224,120,48,0.12);
+}
+.rider-avatar {
+  width: 100%; aspect-ratio: 1/1;
+  background: var(--bg3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 4rem; position: relative;
+  overflow: hidden;
+}
+.rider-avatar::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 40%;
+  background: linear-gradient(to top, var(--bg2), transparent);
+}
+.rider-discipline {
+  position: absolute; top: 10px; right: 10px;
+  background: rgba(224,120,48,0.9);
+  font-size: 0.65rem; font-weight: 700;
+  padding: 2px 8px; border-radius: 20px;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  font-family: var(--en); z-index: 1;
+}
+body.ltr .rider-discipline { right: auto; left: 10px; }
+
+.rider-info { padding: 1rem; }
+.rider-name { font-size: 1rem; font-weight: 700; margin-bottom: 0.25rem; }
+.rider-club { font-size: 0.75rem; color: var(--muted); margin-bottom: 0.6rem; }
+.rider-footer {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.rider-photo-count {
+  font-size: 0.75rem; color: var(--orange2); font-weight: 600;
+  font-family: var(--en);
+}
+.rider-arrow {
+  color: var(--muted); font-size: 0.85rem;
+  transition: color 0.2s, transform 0.2s;
+}
+.rider-card:hover .rider-arrow { color: var(--orange); transform: translateX(3px); }
+body.ltr .rider-card:hover .rider-arrow { transform: translateX(-3px); }
+
+/* ── RIDER PROFILE OVERLAY ── */
+.profile-overlay {
+  position: fixed; inset: 0; z-index: 300;
+  background: var(--bg);
+  overflow-y: auto;
+  display: none; opacity: 0;
+  transition: opacity 0.25s;
+}
+.profile-overlay.open { display: block; }
+.profile-overlay.visible { opacity: 1; }
+
+.profile-hero {
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  padding: 70px 2rem 2rem;
+}
+.profile-top-bar {
+  position: sticky; top: 0; z-index: 10;
+  background: rgba(28,28,28,0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0.8rem 2rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.btn-back {
+  background: var(--bg3); border: 1px solid var(--border);
+  color: var(--light); padding: 0.4rem 0.9rem;
+  border-radius: 8px; font-size: 0.8rem; cursor: pointer;
+  font-family: var(--fa); display: flex; align-items: center; gap: 0.4rem;
+  transition: border-color 0.2s;
+}
+body.ltr .btn-back { font-family: var(--en); }
+.btn-back:hover { border-color: var(--orange); }
+.profile-bar-name { font-size: 0.95rem; font-weight: 700; flex: 1; }
+
+.profile-body { max-width: 1100px; margin: 0 auto; padding: 2rem; }
+
+.profile-identity {
+  display: flex; align-items: flex-end; gap: 2rem;
+  margin-bottom: 2rem; flex-wrap: wrap;
+}
+.profile-big-avatar {
+  width: 110px; height: 110px; border-radius: 50%;
+  background: var(--bg3); border: 3px solid var(--orange);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 3rem; flex-shrink: 0;
+}
+.profile-name-block h2 {
+  font-family: var(--display);
+  font-size: 2rem; line-height: 1.1;
+}
+.profile-name-block .club { color: var(--muted); font-size: 0.85rem; margin-top: 0.3rem; }
+.profile-name-block .disc {
+  display: inline-block;
+  background: var(--orange-dim); color: var(--orange2);
+  font-size: 0.7rem; font-weight: 700;
+  padding: 2px 10px; border-radius: 20px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  font-family: var(--en); margin-top: 0.5rem;
+}
+
+.profile-stats {
+  display: flex; gap: 2rem; margin-bottom: 2rem;
+  padding: 1.2rem 1.5rem;
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 12px; flex-wrap: wrap;
+}
+.pstat { text-align: center; }
+.pstat-val { font-family: var(--display); font-size: 1.6rem; color: var(--orange); }
+.pstat-lbl { font-size: 0.7rem; color: var(--muted); margin-top: 0.1rem; }
+
+/* ── EVENT TABS ── */
+.event-tabs {
+  display: flex; gap: 0.5rem; flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+.tab-btn {
+  background: var(--bg3); border: 1px solid var(--border);
+  color: var(--muted); padding: 0.4rem 1rem;
+  border-radius: 20px; font-size: 0.78rem; cursor: pointer;
+  font-family: var(--fa); transition: all 0.2s;
+}
+body.ltr .tab-btn { font-family: var(--en); }
+.tab-btn:hover { border-color: var(--orange-dim); color: var(--light); }
+.tab-btn.active { background: var(--orange); border-color: var(--orange); color: #fff; font-weight: 700; }
+
+/* ── PHOTOS GRID ── */
+.photos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+.photo-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px; overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.photo-card.selected {
+  border-color: var(--orange);
+  box-shadow: 0 0 0 2px rgba(224,120,48,0.25);
+}
+.photo-thumb {
+  width: 100%; aspect-ratio: 2/3;
+  background: var(--bg3);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden; cursor: zoom-in;
+}
+.photo-emoji { font-size: 3rem; }
+.photo-wm {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--en); font-size: 0.9rem; font-weight: 700;
+  color: rgba(255,255,255,0.12);
+  transform: rotate(-35deg); letter-spacing: 0.1em;
+  pointer-events: none; user-select: none;
+  white-space: nowrap;
+}
+.photo-num {
+  position: absolute; top: 6px; right: 6px;
+  background: rgba(0,0,0,0.65);
+  font-family: var(--en); font-size: 0.65rem; font-weight: 700;
+  padding: 2px 6px; border-radius: 20px; color: var(--muted);
+}
+body.ltr .photo-num { right: auto; left: 6px; }
+
+.photo-footer {
+  padding: 0.65rem 0.75rem;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.photo-price {
+  font-size: 0.82rem; font-weight: 700;
+  color: var(--orange); font-family: var(--en);
+}
+.btn-add {
+  background: var(--orange); border: none; color: #fff;
+  padding: 0.3rem 0.75rem; border-radius: 6px;
+  font-size: 0.75rem; font-weight: 700; cursor: pointer;
+  font-family: var(--fa); transition: all 0.15s;
+}
+body.ltr .btn-add { font-family: var(--en); }
+.btn-add:hover { background: var(--orange2); }
+.btn-add.added { background: var(--bg3); color: var(--muted); border: 1px solid var(--border); }
+
+/* ── CART DRAWER ── */
+.backdrop {
+  position: fixed; inset: 0; z-index: 400;
+  background: rgba(0,0,0,0.65);
+  display: none;
+}
+.backdrop.open { display: block; }
+
+.cart-drawer {
+  position: fixed; top: 0; left: 0; bottom: 0;
+  width: min(380px, 100vw);
+  background: var(--bg2);
+  border-right: 1px solid var(--border);
+  z-index: 410;
+  display: flex; flex-direction: column;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+body.ltr .cart-drawer {
+  left: auto; right: 0;
+  border-right: none; border-left: 1px solid var(--border);
+  transform: translateX(100%);
+}
+.cart-drawer.open { transform: translateX(0); }
+
+.cart-hd {
+  padding: 1.2rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.cart-hd h2 { font-size: 1rem; font-weight: 700; }
+.btn-close-cart {
+  background: none; border: none; color: var(--muted);
+  font-size: 1.4rem; cursor: pointer; line-height: 1;
+  transition: color 0.2s;
+}
+.btn-close-cart:hover { color: var(--white); }
+
+.cart-list { flex: 1; overflow-y: auto; padding: 1rem 1.5rem; }
+.cart-empty { text-align: center; color: var(--muted); padding: 3rem 0; font-size: 0.85rem; }
+
+.cart-item {
+  display: flex; gap: 0.75rem; align-items: flex-start;
+  padding: 0.75rem 0; border-bottom: 1px solid var(--border);
+}
+.ci-thumb {
+  width: 44px; height: 60px; border-radius: 6px;
+  background: var(--bg3); display: flex; align-items: center;
+  justify-content: center; font-size: 1.2rem; flex-shrink: 0;
+}
+.ci-info { flex: 1; }
+.ci-name { font-size: 0.8rem; font-weight: 600; }
+.ci-rider { font-size: 0.7rem; color: var(--muted); margin: 0.15rem 0; }
+.ci-price { font-size: 0.8rem; color: var(--orange); font-weight: 700; font-family: var(--en); }
+.btn-remove {
+  background: none; border: none; color: #555;
+  cursor: pointer; font-size: 1rem; padding: 0.2rem;
+  transition: color 0.2s;
+}
+.btn-remove:hover { color: #e55; }
+
+.cart-ft {
+  padding: 1.2rem 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.cart-total-row {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 0.9rem;
+}
+.cart-total-row span:first-child { font-size: 0.85rem; color: var(--muted); }
+.cart-total-amount { font-size: 1.05rem; font-weight: 800; color: var(--orange); font-family: var(--en); }
+.btn-checkout {
+  width: 100%; background: var(--orange); border: none; color: #fff;
+  padding: 0.85rem; border-radius: 10px;
+  font-size: 0.95rem; font-weight: 800; cursor: pointer;
+  font-family: var(--fa); transition: background 0.2s;
+}
+body.ltr .btn-checkout { font-family: var(--en); }
+.btn-checkout:hover { background: var(--orange2); }
+.btn-checkout:disabled { background: var(--bg3); color: var(--muted); cursor: not-allowed; }
+
+/* ── CHECKOUT MODAL ── */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 500;
+  background: rgba(0,0,0,0.8);
+  display: none; align-items: center; justify-content: center; padding: 1rem;
+}
+.modal-overlay.open { display: flex; }
+.modal-box {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 16px; padding: 2rem;
+  width: min(460px,100%); max-height: 90vh; overflow-y: auto;
+}
+.modal-box h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.4rem; }
+.modal-box .modal-sub { font-size: 0.8rem; color: var(--muted); margin-bottom: 1.4rem; line-height: 1.6; }
+
+.form-grp { margin-bottom: 0.9rem; }
+.form-grp label { display: block; font-size: 0.75rem; color: var(--muted); margin-bottom: 0.35rem; }
+.form-grp input {
+  width: 100%; background: var(--bg); border: 1px solid var(--border);
+  color: var(--white); padding: 0.65rem 0.9rem; border-radius: 8px;
+  font-size: 0.88rem; font-family: var(--fa); outline: none;
+  transition: border-color 0.2s;
+}
+body.ltr .form-grp input { font-family: var(--en); }
+.form-grp input:focus { border-color: var(--orange); }
+
+.order-mini {
+  background: var(--bg); border-radius: 8px;
+  padding: 0.9rem; margin-bottom: 1.2rem; font-size: 0.78rem;
+}
+.order-mini .row {
+  display: flex; justify-content: space-between;
+  padding: 0.2rem 0; color: var(--light);
+}
+.order-mini .row-total {
+  border-top: 1px solid var(--border);
+  margin-top: 0.4rem; padding-top: 0.4rem;
+  font-weight: 700;
+}
+.order-mini .row-total span:last-child { color: var(--orange); font-family: var(--en); }
+
+.modal-acts { display: flex; gap: 0.7rem; }
+.btn-cancel {
+  flex: 1; background: var(--bg3); border: 1px solid var(--border);
+  color: var(--light); padding: 0.75rem; border-radius: 8px;
+  font-size: 0.85rem; cursor: pointer; font-family: var(--fa);
+}
+body.ltr .btn-cancel { font-family: var(--en); }
+.btn-pay {
+  flex: 2; background: var(--orange); border: none; color: #fff;
+  padding: 0.75rem; border-radius: 8px;
+  font-size: 0.9rem; font-weight: 800; cursor: pointer; font-family: var(--fa);
+  transition: background 0.2s;
+}
+body.ltr .btn-pay { font-family: var(--en); }
+.btn-pay:hover { background: var(--orange2); }
+
+/* success */
+.success-box {
+  display: none; background: #0d2818; border: 1px solid #2a5a3a;
+  border-radius: 10px; padding: 1.2rem; text-align: center;
+  margin-bottom: 1.2rem;
+}
+.success-box.show { display: block; }
+.success-box h3 { color: #52b788; margin-bottom: 0.4rem; font-size: 1rem; }
+.success-box p { font-size: 0.78rem; color: #74c69d; }
+
+/* ── FOOTER ── */
+footer {
+  text-align: center; padding: 2.5rem 2rem 3rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted); font-size: 0.75rem;
+}
+footer .brand { font-family: var(--display); font-size: 1.1rem; color: var(--orange); }
+
+/* ── RESPONSIVE ── */
+@media(max-width: 600px) {
+  .hero h1 { font-size: 2.4rem; }
+  .hero-stats { gap: 1.5rem; }
+  .profile-identity { gap: 1rem; }
+  .profile-big-avatar { width: 80px; height: 80px; font-size: 2.2rem; }
+  .profile-name-block h2 { font-size: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo-mark">🐴</div>
+    <div class="nav-brand-text">
+      Kerman Horse Gallery
+      <small>Equestrian Photography</small>
+    </div>
+  </div>
+  <div class="nav-right">
+    <button class="btn-lang" onclick="toggleLang()">EN / FA</button>
+    <button class="btn-cart" onclick="openCart()">
+      🛒 <span id="lbl-cart-btn">سبد خرید</span>
+      <span class="cart-badge" id="cart-count">0</span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag" id="hero-tag">Kerman · Iran · Equestrian Photography</div>
+  <h1 id="hero-h1">گالری<br><span class="accent">سوارکاری کرمان</span></h1>
+  <p class="hero-sub" id="hero-sub">پروفایل سوارکار خود را پیدا کنید، عکس‌های مسابقه‌تان را انتخاب کنید و دریافت کنید</p>
+  <div class="hero-stats">
+    <div class="pstat">
+      <div class="stat-val" id="stat-riders">۱۲</div>
+      <div class="stat-lbl" id="lbl-riders">سوارکار</div>
+    </div>
+    <div class="pstat">
+      <div class="stat-val" id="stat-photos">۸۴</div>
+      <div class="stat-lbl" id="lbl-photos">عکس</div>
+    </div>
+    <div class="pstat">
+      <div class="stat-val" id="stat-events">۶</div>
+      <div class="stat-lbl" id="lbl-events">رویداد</div>
+    </div>
+  </div>
+</div>
+
+<!-- SEARCH -->
+<div class="search-wrap">
+  <div class="search-box">
+    <span class="search-icon">🔍</span>
+    <input class="search-input" id="search-input" type="text" placeholder="جستجوی نام سوارکار..." oninput="filterRiders()">
+  </div>
+</div>
+
+<!-- RIDERS -->
+<div class="sec">
+  <div class="sec-head">
+    <div class="sec-title" id="lbl-riders-sec">سوارکاران</div>
+    <div class="sec-meta" id="riders-count-lbl">۱۲ نفر</div>
+  </div>
+  <div class="riders-grid" id="riders-grid"></div>
+</div>
+
+<!-- PROFILE OVERLAY -->
+<div class="profile-overlay" id="profile-overlay">
+  <div class="profile-top-bar">
+    <button class="btn-back" onclick="closeProfile()">
+      <span id="lbl-back">← بازگشت</span>
+    </button>
+    <div class="profile-bar-name" id="profile-bar-name"></div>
+    <button class="btn-cart" onclick="openCart()" style="margin-right:auto;margin-left:0">
+      body.ltr ? '🛒' : '🛒' 
+      🛒 <span class="cart-badge" id="cart-count2">0</span>
+    </button>
+  </div>
+
+  <div class="profile-body">
+    <div class="profile-identity">
+      <div class="profile-big-avatar" id="p-avatar"></div>
+      <div class="profile-name-block">
+        <h2 id="p-name"></h2>
+        <div class="club" id="p-club"></div>
+        <span class="disc" id="p-disc"></span>
+      </div>
+    </div>
+
+    <div class="profile-stats" id="p-stats"></div>
+
+    <div class="event-tabs" id="event-tabs"></div>
+
+    <div class="photos-grid" id="photos-grid"></div>
+  </div>
+</div>
+
+<!-- BACKDROP -->
+<div class="backdrop" id="backdrop" onclick="closeCart()"></div>
+
+<!-- CART DRAWER -->
+<div class="cart-drawer" id="cart-drawer">
+  <div class="cart-hd">
+    <h2 id="lbl-cart-title">سبد خرید</h2>
+    <button class="btn-close-cart" onclick="closeCart()">×</button>
+  </div>
+  <div class="cart-list" id="cart-list"></div>
+  <div class="cart-ft">
+    <div class="cart-total-row">
+      <span id="lbl-total">جمع کل</span>
+      <span class="cart-total-amount" id="cart-total-amt">۰ تومان</span>
+    </div>
+    <button class="btn-checkout" id="btn-checkout" onclick="openCheckout()" disabled id="lbl-checkout">
+      <span id="lbl-checkout">پرداخت با زرین‌پال</span>
+    </button>
+  </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal-box">
+    <div class="success-box" id="success-box">
+      <h3 id="lbl-success-title">✅ سفارش ثبت شد!</h3>
+      <p id="lbl-success-msg">لینک دانلود عکس‌ها به ایمیل شما ارسال خواهد شد.</p>
+    </div>
+    <h2 id="lbl-modal-title">اطلاعات خریدار</h2>
+    <p class="modal-sub" id="lbl-modal-sub">پس از پرداخت، لینک دانلود عکس‌ها به ایمیل شما ارسال می‌شود</p>
+    <div class="form-grp">
+      <label id="lbl-name">نام و نام خانوادگی</label>
+      <input type="text" id="inp-name" placeholder="علی رضایی">
+    </div>
+    <div class="form-grp">
+      <label>ایمیل</label>
+      <input type="email" id="inp-email" placeholder="example@email.com" dir="ltr">
+    </div>
+    <div class="form-grp">
+      <label id="lbl-phone">شماره موبایل</label>
+      <input type="tel" id="inp-phone" placeholder="09xxxxxxxxx" dir="ltr">
+    </div>
+    <div class="order-mini" id="order-mini"></div>
+    <div class="modal-acts">
+      <button class="btn-cancel" onclick="closeCheckout()" id="lbl-cancel">انصراف</button>
+      <button class="btn-pay" onclick="doPayment()" id="lbl-pay">پرداخت با زرین‌پال ↗</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="brand">Kerman Horse Gallery</div>
+  <p style="margin-top:0.5rem">© ۱۴۰۳ · محمدعلی · عکاسی سوارکاری کرمان</p>
+</footer>
+
+<script>
+/* ══════════════════════════════════════════
+   DATA
+══════════════════════════════════════════ */
+const RIDERS = [
+  {
+    id:1, emoji:'🏇', nameFA:'سارا احمدی', nameEN:'Sara Ahmadi',
+    clubFA:'باشگاه اسب‌سواری شهداء کرمان', clubEN:'Shohada Equestrian Club',
+    disc:'Show Jumping', photoCount:8, price:90000,
+    events:[
+      { id:'e1', nameFA:'جام بهار ۱۴۰۳', nameEN:'Spring Cup 2024', photos:5 },
+      { id:'e2', nameFA:'مسابقات استانی', nameEN:'Provincial Championship', photos:3 }
+    ]
+  },
+  {
+    id:2, emoji:'🐎', nameFA:'علی رضایی', nameEN:'Ali Rezaei',
+    clubFA:'باشگاه سوارکاری پارس', clubEN:'Pars Equestrian Club',
+    disc:'Dressage', photoCount:6, price:85000,
+    events:[
+      { id:'e1', nameFA:'جام بهار ۱۴۰۳', nameEN:'Spring Cup 2024', photos:4 },
+      { id:'e3', nameFA:'هفته اسب کرمان', nameEN:'Kerman Horse Week', photos:2 }
+    ]
+  },
+  {
+    id:3, emoji:'🏆', nameFA:'مریم کریمی', nameEN:'Maryam Karimi',
+    clubFA:'باشگاه صبا', clubEN:'Saba Riding Club',
+    disc:'Endurance', photoCount:10, price:95000,
+    events:[
+      { id:'e2', nameFA:'مسابقات استانی', nameEN:'Provincial Championship', photos:6 },
+      { id:'e3', nameFA:'هفته اسب کرمان', nameEN:'Kerman Horse Week', photos:4 }
+    ]
+  },
+  {
+    id:4, emoji:'⚡', nameFA:'حسین موسوی', nameEN:'Hossein Mousavi',
+    clubFA:'باشگاه اسب‌سواری شهداء کرمان', clubEN:'Shohada Equestrian Club',
+    disc:'Show Jumping', photoCount:7, price:90000,
+    events:[
+      { id:'e1', nameFA:'جام بهار ۱۴۰۳', nameEN:'Spring Cup 2024', photos:7 }
+    ]
+  },
+  {
+    id:5, emoji:'🌟', nameFA:'فاطمه حسینی', nameEN:'Fatemeh Hosseini',
+    clubFA:'باشگاه سوارکاری پارس', clubEN:'Pars Equestrian Club',
+    disc:'Dressage', photoCount:5, price:80000,
+    events:[
+      { id:'e3', nameFA:'هفته اسب کرمان', nameEN:'Kerman Horse Week', photos:5 }
+    ]
+  },
+  {
+    id:6, emoji:'🎯', nameFA:'محمد جعفری', nameEN:'Mohammad Jafari',
+    clubFA:'باشگاه صبا', clubEN:'Saba Riding Club',
+    disc:'Polo', photoCount:9, price:100000,
+    events:[
+      { id:'e2', nameFA:'مسابقات استانی', nameEN:'Provincial Championship', photos:5 },
+      { id:'e4', nameFA:'جشنواره پاییزه', nameEN:'Autumn Festival', photos:4 }
+    ]
+  },
+  {
+    id:7, emoji:'💎', nameFA:'زهرا نوری', nameEN:'Zahra Nouri',
+    clubFA:'باشگاه اسب‌سواری شهداء کرمان', clubEN:'Shohada Equestrian Club',
+    disc:'Show Jumping', photoCount:6, price:90000,
+    events:[
+      { id:'e4', nameFA:'جشنواره پاییزه', nameEN:'Autumn Festival', photos:6 }
+    ]
+  },
+  {
+    id:8, emoji:'🔥', nameFA:'امیر صادقی', nameEN:'Amir Sadeghi',
+    clubFA:'باشگاه سوارکاری پارس', clubEN:'Pars Equestrian Club',
+    disc:'Endurance', photoCount:8, price:85000,
+    events:[
+      { id:'e1', nameFA:'جام بهار ۱۴۰۳', nameEN:'Spring Cup 2024', photos:3 },
+      { id:'e4', nameFA:'جشنواره پاییزه', nameEN:'Autumn Festival', photos:5 }
+    ]
+  },
+  {
+    id:9, emoji:'🌙', nameFA:'نرگس محمودی', nameEN:'Narges Mahmoudi',
+    clubFA:'باشگاه صبا', clubEN:'Saba Riding Club',
+    disc:'Dressage', photoCount:5, price:80000,
+    events:[
+      { id:'e3', nameFA:'هفته اسب کرمان', nameEN:'Kerman Horse Week', photos:5 }
+    ]
+  },
+  {
+    id:10, emoji:'🏅', nameFA:'رضا عباسی', nameEN:'Reza Abbasi',
+    clubFA:'باشگاه اسب‌سواری شهداء کرمان', clubEN:'Shohada Equestrian Club',
+    disc:'Polo', photoCount:7, price:95000,
+    events:[
+      { id:'e2', nameFA:'مسابقات استانی', nameEN:'Provincial Championship', photos:3 },
+      { id:'e4', nameFA:'جشنواره پاییزه', nameEN:'Autumn Festival', photos:4 }
+    ]
+  },
+  {
+    id:11, emoji:'🌿', nameFA:'شیما رستمی', nameEN:'Shima Rostami',
+    clubFA:'باشگاه سوارکاری پارس', clubEN:'Pars Equestrian Club',
+    disc:'Endurance', photoCount:9, price:85000,
+    events:[
+      { id:'e1', nameFA:'جام بهار ۱۴۰۳', nameEN:'Spring Cup 2024', photos:4 },
+      { id:'e3', nameFA:'هفته اسب کرمان', nameEN:'Kerman Horse Week', photos:5 }
+    ]
+  },
+  {
+    id:12, emoji:'⭐', nameFA:'کاوه میرزایی', nameEN:'Kaveh Mirzaei',
+    clubFA:'باشگاه صبا', clubEN:'Saba Riding Club',
+    disc:'Show Jumping', photoCount:5, price:90000,
+    events:[
+      { id:'e4', nameFA:'جشنواره پاییزه', nameEN:'Autumn Festival', photos:5 }
+    ]
+  }
+];
+
+const PHOTO_EMOJIS = ['🐴','🏇','🌟','⚡','🎯','🔥','💨','🏆','🎖','💎','🌙','🦄'];
+
+let lang = 'fa';
+let cart = [];
+let currentRider = null;
+let currentEventFilter = 'all';
+
+/* ══════════════════════════════════════════
+   TRANSLATIONS
+══════════════════════════════════════════ */
+const T = {
+  fa: {
+    cartBtn: 'سبد خرید', cartTitle: 'سبد خرید', ridersSec: 'سوارکاران',
+    ridersCount: n => `${n} نفر`, back: '← بازگشت',
+    totalLabel: 'جمع کل', checkoutBtn: 'پرداخت با زرین‌پال',
+    cartEmpty: 'سبد خرید خالی است',
+    photos: n => `${n} عکس`,
+    allEvents: 'همه رویدادها',
+    modalTitle: 'اطلاعات خریدار',
+    modalSub: 'پس از پرداخت، لینک دانلود به ایمیل شما ارسال می‌شود',
+    nameLabel: 'نام و نام خانوادگی',
+    phoneLabel: 'شماره موبایل',
+    cancelLabel: 'انصراف',
+    payLabel: 'پرداخت با زرین‌پال ↗',
+    successTitle: '✅ سفارش ثبت شد!',
+    successMsg: 'لینک دانلود عکس‌ها به ایمیل شما ارسال خواهد شد.',
+    addBtn: 'افزودن', addedBtn: '✓ افزوده شد',
+    price: p => `${p.toLocaleString('fa-IR')} تومان`,
+    total: p => `${p.toLocaleString('fa-IR')} تومان`,
+    photoOf: (rider, ev, n) => `عکس ${n} — ${rider} — ${ev}`,
+    heroSub: 'پروفایل سوارکار خود را پیدا کنید، عکس‌های مسابقه‌تان را انتخاب کنید و دریافت کنید',
+    searchPH: 'جستجوی نام سوارکار...',
+    lblRiders: 'سوارکار', lblPhotos: 'عکس', lblEvents: 'رویداد',
+  },
+  en: {
+    cartBtn: 'Cart', cartTitle: 'Shopping Cart', ridersSec: 'Riders',
+    ridersCount: n => `${n} Riders`, back: '← Back',
+    totalLabel: 'Total', checkoutBtn: 'Pay with ZarinPal',
+    cartEmpty: 'Your cart is empty',
+    photos: n => `${n} Photos`,
+    allEvents: 'All Events',
+    modalTitle: 'Buyer Information',
+    modalSub: 'After payment, a download link will be sent to your email',
+    nameLabel: 'Full Name',
+    phoneLabel: 'Mobile Number',
+    cancelLabel: 'Cancel',
+    payLabel: 'Pay with ZarinPal ↗',
+    successTitle: '✅ Order Confirmed!',
+    successMsg: 'Your download link will be sent to your email.',
+    addBtn: 'Add', addedBtn: '✓ Added',
+    price: p => `${p.toLocaleString()} T`,
+    total: p => `${p.toLocaleString()} Toman`,
+    photoOf: (rider, ev, n) => `Photo ${n} — ${rider} — ${ev}`,
+    heroSub: 'Find your rider profile, choose your competition photos, and receive them',
+    searchPH: 'Search rider name...',
+    lblRiders: 'Riders', lblPhotos: 'Photos', lblEvents: 'Events',
+  }
+};
+
+/* ══════════════════════════════════════════
+   RENDER MAIN PAGE
+══════════════════════════════════════════ */
+function applyLang() {
+  const t = T[lang];
+  document.getElementById('lbl-cart-btn').textContent = t.cartBtn;
+  document.getElementById('lbl-cart-title').textContent = t.cartTitle;
+  document.getElementById('lbl-riders-sec').textContent = t.ridersSec;
+  document.getElementById('lbl-back').textContent = t.back;
+  document.getElementById('lbl-total').textContent = t.totalLabel;
+  document.getElementById('lbl-checkout').textContent = t.checkoutBtn;
+  document.getElementById('lbl-modal-title').textContent = t.modalTitle;
+  document.getElementById('lbl-modal-sub').textContent = t.modalSub;
+  document.getElementById('lbl-name').textContent = t.nameLabel;
+  document.getElementById('lbl-phone').textContent = t.phoneLabel;
+  document.getElementById('lbl-cancel').textContent = t.cancelLabel;
+  document.getElementById('lbl-pay').textContent = t.payLabel;
+  document.getElementById('lbl-success-title').textContent = t.successTitle;
+  document.getElementById('lbl-success-msg').textContent = t.successMsg;
+  document.getElementById('hero-sub').textContent = t.heroSub;
+  document.getElementById('search-input').placeholder = t.searchPH;
+  document.getElementById('lbl-riders').textContent = t.lblRiders;
+  document.getElementById('lbl-photos').textContent = t.lblPhotos;
+  document.getElementById('lbl-events').textContent = t.lblEvents;
+}
+
+function renderRiders(list) {
+  const t = T[lang];
+  const grid = document.getElementById('riders-grid');
+  document.getElementById('riders-count-lbl').textContent = t.ridersCount(list.length);
+
+  grid.innerHTML = list.map(r => `
+    <div class="rider-card" onclick="openProfile(${r.id})">
+      <div class="rider-avatar ${r.disc.toLowerCase().replace(' ','-')}">
+        <span style="font-size:4rem">${r.emoji}</span>
+        <div class="rider-discipline">${r.disc}</div>
+      </div>
+      <div class="rider-info">
+        <div class="rider-name">${lang==='fa' ? r.nameFA : r.nameEN}</div>
+        <div class="rider-club">${lang==='fa' ? r.clubFA : r.clubEN}</div>
+        <div class="rider-footer">
+          <span class="rider-photo-count">${t.photos(r.photoCount)}</span>
+          <span class="rider-arrow">→</span>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterRiders() {
+  const q = document.getElementById('search-input').value.toLowerCase().trim();
+  const filtered = RIDERS.filter(r =>
+    r.nameFA.includes(q) || r.nameEN.toLowerCase().includes(q) || !q
+  );
+  renderRiders(filtered);
+}
+
+/* ══════════════════════════════════════════
+   PROFILE
+══════════════════════════════════════════ */
+function openProfile(riderId) {
+  const r = RIDERS.find(x => x.id === riderId);
+  currentRider = r;
+  currentEventFilter = 'all';
+  const t = T[lang];
+
+  document.getElementById('profile-bar-name').textContent = lang==='fa' ? r.nameFA : r.nameEN;
+  document.getElementById('p-avatar').textContent = r.emoji;
+  document.getElementById('p-name').textContent = lang==='fa' ? r.nameFA : r.nameEN;
+  document.getElementById('p-club').textContent = lang==='fa' ? r.clubFA : r.clubEN;
+  document.getElementById('p-disc').textContent = r.disc;
+
+  const totalEv = r.events.length;
+  document.getElementById('p-stats').innerHTML = `
+    <div class="pstat"><div class="pstat-val">${r.photoCount}</div><div class="pstat-lbl">${t.lblPhotos}</div></div>
+    <div class="pstat"><div class="pstat-val">${totalEv}</div><div class="pstat-lbl">${t.lblEvents}</div></div>
+    <div class="pstat"><div class="pstat-val">${t.price(r.price)}</div><div class="pstat-lbl" style="white-space:nowrap">${lang==='fa'?'هر عکس':'per photo'}</div></div>
+  `;
+
+  renderEventTabs(r);
+  renderPhotos(r, 'all');
+
+  const overlay = document.getElementById('profile-overlay');
+  overlay.classList.add('open');
+  setTimeout(() => overlay.classList.add('visible'), 10);
+  overlay.scrollTop = 0;
+}
+
+function closeProfile() {
+  const overlay = document.getElementById('profile-overlay');
+  overlay.classList.remove('visible');
+  setTimeout(() => overlay.classList.remove('open'), 250);
+  currentRider = null;
+}
+
+function renderEventTabs(r) {
+  const t = T[lang];
+  const tabs = document.getElementById('event-tabs');
+  tabs.innerHTML = `
+    <button class="tab-btn active" onclick="filterEvent('all', this)">${t.allEvents}</button>
+    ${r.events.map(ev => `
+      <button class="tab-btn" onclick="filterEvent('${ev.id}', this)">
+        ${lang==='fa' ? ev.nameFA : ev.nameEN}
+      </button>
+    `).join('')}
+  `;
+}
+
+function filterEvent(evId, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentEventFilter = evId;
+  renderPhotos(currentRider, evId);
+}
+
+function renderPhotos(r, evFilter) {
+  const t = T[lang];
+  const grid = document.getElementById('photos-grid');
+  grid.innerHTML = '';
+
+  let photoIdx = 0;
+  const eventsToShow = evFilter === 'all' ? r.events : r.events.filter(ev => ev.id === evFilter);
+
+  eventsToShow.forEach(ev => {
+    for (let i = 1; i <= ev.photos; i++) {
+      photoIdx++;
+      const itemId = `${r.id}-${ev.id}-${i}`;
+      const inCart = cart.some(c => c.id === itemId);
+      const em = PHOTO_EMOJIS[(photoIdx - 1) % PHOTO_EMOJIS.length];
+      const evName = lang==='fa' ? ev.nameFA : ev.nameEN;
+
+      const card = document.createElement('div');
+      card.className = `photo-card${inCart ? ' selected' : ''}`;
+      card.id = `card-${itemId}`;
+      card.innerHTML = `
+        <div class="photo-thumb">
+          <span class="photo-emoji">${em}</span>
+          <div class="photo-num">#${String(photoIdx).padStart(3,'0')}</div>
+          <div class="photo-wm">© Kerman Horse Gallery</div>
+        </div>
+        <div class="photo-footer">
+          <div class="photo-price">${t.price(r.price)}</div>
+          <button class="btn-add${inCart?' added':''}" id="btn-${itemId}"
+            onclick="toggleCart('${itemId}', ${r.id}, '${ev.id}', ${i}, ${photoIdx})">
+            ${inCart ? t.addedBtn : t.addBtn}
+          </button>
+        </div>
+      `;
+      grid.appendChild(card);
+    }
+  });
+}
+
+/* ══════════════════════════════════════════
+   CART
+══════════════════════════════════════════ */
+function toggleCart(id, riderId, evId, photoNum, globalNum) {
+  const r = RIDERS.find(x => x.id === riderId);
+  const ev = r.events.find(e => e.id === evId);
+  const t = T[lang];
+  const idx = cart.findIndex(c => c.id === id);
+
+  if (idx >= 0) {
+    cart.splice(idx, 1);
+    document.getElementById(`card-${id}`)?.classList.remove('selected');
+    const btn = document.getElementById(`btn-${id}`);
+    if (btn) { btn.textContent = t.addBtn; btn.classList.remove('added'); }
+  } else {
+    cart.push({
+      id, riderId, evId, photoNum, globalNum,
+      price: r.price, emoji: PHOTO_EMOJIS[(globalNum-1)%PHOTO_EMOJIS.length],
+      riderFA: r.nameFA, riderEN: r.nameEN,
+      evFA: ev.nameFA, evEN: ev.nameEN
+    });
+    document.getElementById(`card-${id}`)?.classList.add('selected');
+    const btn = document.getElementById(`btn-${id}`);
+    if (btn) { btn.textContent = t.addedBtn; btn.classList.add('added'); }
+  }
+  updateCartCount();
+  renderCartList();
+}
+
+function removeFromCart(id) {
+  const idx = cart.findIndex(c => c.id === id);
+  if (idx < 0) return;
+  cart.splice(idx, 1);
+  updateCartCount();
+  renderCartList();
+  document.getElementById(`card-${id}`)?.classList.remove('selected');
+  const btn = document.getElementById(`btn-${id}`);
+  if (btn) { btn.textContent = T[lang].addBtn; btn.classList.remove('added'); }
+}
+
+function updateCartCount() {
+  document.getElementById('cart-count').textContent = cart.length;
+  document.getElementById('cart-count2').textContent = cart.length;
+}
+
+function renderCartList() {
+  const t = T[lang];
+  const list = document.getElementById('cart-list');
+  const total = cart.reduce((s,i) => s+i.price, 0);
+  document.getElementById('cart-total-amt').textContent = t.total(total);
+  document.getElementById('btn-checkout').disabled = cart.length === 0;
+
+  if (!cart.length) {
+    list.innerHTML = `<div class="cart-empty">${t.cartEmpty}</div>`;
+    return;
+  }
+  list.innerHTML = cart.map(item => `
+    <div class="cart-item">
+      <div class="ci-thumb">${item.emoji}</div>
+      <div class="ci-info">
+        <div class="ci-name">${lang==='fa'?item.riderFA:item.riderEN} · #${String(item.globalNum).padStart(3,'0')}</div>
+        <div class="ci-rider">${lang==='fa'?item.evFA:item.evEN}</div>
+        <div class="ci-price">${t.price(item.price)}</div>
+      </div>
+      <button class="btn-remove" onclick="removeFromCart('${item.id}')">×</button>
+    </div>
+  `).join('');
+}
+
+function openCart() {
+  renderCartList();
+  document.getElementById('cart-drawer').classList.add('open');
+  document.getElementById('backdrop').classList.add('open');
+}
+function closeCart() {
+  document.getElementById('cart-drawer').classList.remove('open');
+  document.getElementById('backdrop').classList.remove('open');
+}
+
+/* ══════════════════════════════════════════
+   CHECKOUT
+══════════════════════════════════════════ */
+function openCheckout() {
+  const t = T[lang];
+  const total = cart.reduce((s,i) => s+i.price, 0);
+  document.getElementById('order-mini').innerHTML = `
+    ${cart.map(item => `
+      <div class="row">
+        <span>${lang==='fa'?item.riderFA:item.riderEN} · #${String(item.globalNum).padStart(3,'0')}</span>
+        <span>${t.price(item.price)}</span>
+      </div>
+    `).join('')}
+    <div class="row row-total">
+      <span>${t.totalLabel}</span>
+      <span>${t.total(total)}</span>
+    </div>
+  `;
+  document.getElementById('success-box').classList.remove('show');
+  document.getElementById('modal-overlay').classList.add('open');
+}
+function closeCheckout() {
+  document.getElementById('modal-overlay').classList.remove('open');
+}
+
+function doPayment() {
+  const name = document.getElementById('inp-name').value.trim();
+  const email = document.getElementById('inp-email').value.trim();
+  const phone = document.getElementById('inp-phone').value.trim();
+  if (!name || !email || !phone) {
+    alert(lang==='fa' ? 'لطفاً همه فیلدها را پر کنید' : 'Please fill in all fields');
+    return;
+  }
+  // → در اینجا به API زرین‌پال وصل می‌شود
+  // window.location.href = 'https://www.zarinpal.com/pg/StartPay/AUTHORITY';
+  const t = T[lang];
+  document.getElementById('lbl-success-title').textContent = t.successTitle;
+  document.getElementById('lbl-success-msg').textContent = t.successMsg;
+  document.getElementById('success-box').classList.add('show');
+  setTimeout(() => {
+    cart = [];
+    updateCartCount();
+    renderCartList();
+    closeCheckout();
+    closeCart();
+  }, 3000);
+}
+
+/* ══════════════════════════════════════════
+   LANG
+══════════════════════════════════════════ */
+function toggleLang() {
+  lang = lang === 'fa' ? 'en' : 'fa';
+  const body = document.body;
+  if (lang === 'en') {
+    body.classList.add('ltr');
+    body.setAttribute('dir','ltr');
+    body.setAttribute('lang','en');
+    document.getElementById('search-input').setAttribute('dir','ltr');
+  } else {
+    body.classList.remove('ltr');
+    body.setAttribute('dir','rtl');
+    body.setAttribute('lang','fa');
+    document.getElementById('search-input').setAttribute('dir','rtl');
+  }
+  applyLang();
+  renderRiders(RIDERS);
+  renderCartList();
+  if (currentRider) openProfile(currentRider.id);
+}
+
+/* ══════════════════════════════════════════
+   INIT
+══════════════════════════════════════════ */
+applyLang();
+renderRiders(RIDERS);
+updateCartCount();
+</script>
+</body>
+</html>
